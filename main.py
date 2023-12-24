@@ -20,7 +20,7 @@ def handleStart(message):
 
 @bot.message_handler(commands=['menu'])
 def handleMenu(message):
-    keyboard = types.ReplyKeyboardMarkup()
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     btns = []
     for girl in girls:
         btns.append(types.KeyboardButton(girl))
