@@ -24,7 +24,7 @@ def callVery(callback):
     if callback.data == "khadija":
         try:
             if os.path.exists("./images/"):
-                with open("./images/khadija.png",'rb') as photo:
+                with open("./images/send.png",'rb') as photo:
                     caption = "I Love you "
                     bot.send_photo(callback.message.chat.id,photo,caption=caption)
         except Exception as e:
