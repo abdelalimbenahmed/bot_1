@@ -42,8 +42,16 @@ def callVery(callback):
         except Exception as e:
             print(e)
     else:
-        bot.send_message(callback.message.chat.id,callback.data)
+        parts = ["chest","tits","lips","ass","feet"]
+        keyboard = types.InlineKeyboardMarkup()
+        btns = []
+        for part in parts:
+            ptns.append(types.InlineKeyboardButton(part,callback_data=part))
 
+        keyboard.add(*btns)
+        reply_markup = types.ReplyKeyboardRemove()
+        bot.send_message(callback.message.chat.id,reply_markup=reply_markup)
+        bot.send_message(callback.message.chat.id,"أي طرف تريد",reply_markup=keyboard)
 
 @bot.message_handler(func=lambda message:True)
 def handle_message(message):
@@ -57,7 +65,9 @@ def handle_message(message):
         except Exception as e:
             print(e)
     else:
+    
         bot.send_message(khadija_id,message.text)
+        
 
 
 
