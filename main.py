@@ -18,7 +18,7 @@ def handleStart(message):
     keyboard.add(*btns)
     bot.send_message(message.chat.id,"لائحة البنات ؟",reply_markup=keyboard)
 
-@bot.messsage_handler(commands=['menu'])
+@bot.message_handler(commands=['menu'])
 def handleMenu(message):
     keyboard = types.ReplyKeyboardMarkup()
     btns = []
