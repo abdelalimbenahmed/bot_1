@@ -11,13 +11,24 @@ girls  = ["khadija","Halima","laila"]
 
 @bot.message_handler(commands=['start'])
 def handleStart(message):
-    print(message.chat.id)
     keyboard = types.InlineKeyboardMarkup()
     btns =[]
     for girl in girls:
         btns.append(types.InlineKeyboardButton(girl,callback_data=girl))
     keyboard.add(*btns)
     bot.send_message(message.chat.id,"لائحة البنات ؟",reply_markup=keyboard)
+
+@bot.messsage_handler(commands=['menu'])
+    keyboard = types.ReplyKeyboardMarkup()
+    btns = []
+    for girl in girls:
+        btns.append(KeyboardButton(girl))
+
+    keyboard.add(*btns)
+    bot.send_message(message.chat.id,"الفتيات اللتي تريد",reply_markup=keyboard)
+    
+
+    
 
 @bot.callback_query_handler(func=lambda call:True)
 def callVery(callback):
