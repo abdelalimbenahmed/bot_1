@@ -46,7 +46,7 @@ def callVery(callback):
         keyboard = types.InlineKeyboardMarkup()
         btns = []
         for part in parts:
-            ptns.append(types.InlineKeyboardButton(part,callback_data=part))
+            btns.append(types.InlineKeyboardButton(part,callback_data=part))
 
         keyboard.add(*btns)
         reply_markup = types.ReplyKeyboardRemove()
