@@ -19,6 +19,7 @@ def handleStart(message):
     bot.send_message(message.chat.id,"لائحة البنات ؟",reply_markup=keyboard)
 
 @bot.messsage_handler(commands=['menu'])
+def handleMenu(message):
     keyboard = types.ReplyKeyboardMarkup()
     btns = []
     for girl in girls:
