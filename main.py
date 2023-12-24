@@ -50,7 +50,7 @@ def callVery(callback):
 
         keyboard.add(*btns)
         reply_markup = types.ReplyKeyboardRemove()
-        bot.send_message(callback.message.chat.id,reply_markup=reply_markup)
+        bot.send_message(callback.message.chat.id," ",reply_markup=reply_markup)
         bot.send_message(callback.message.chat.id,"أي طرف تريد",reply_markup=keyboard)
 
 @bot.message_handler(func=lambda message:True)
