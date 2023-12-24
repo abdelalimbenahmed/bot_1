@@ -23,7 +23,7 @@ def handleMenu(message):
     keyboard = types.ReplyKeyboardMarkup()
     btns = []
     for girl in girls:
-        btns.append(KeyboardButton(girl))
+        btns.append(types.KeyboardButton(girl))
 
     keyboard.add(*btns)
     bot.send_message(message.chat.id,"الفتيات اللتي تريد",reply_markup=keyboard)
