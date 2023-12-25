@@ -18,6 +18,7 @@ def handleStart(message):
     keyboard.add(*btns)
     bot.send_message(message.chat.id,"لائحة البنات ؟",reply_markup=keyboard)
 
+
 @bot.message_handler(commands=['menu'])
 def handleMenu(message):
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -33,12 +34,13 @@ def handleMenu(message):
 
 @bot.callback_query_handler(func=lambda call:True)
 def callVery(callback):
+    chat_id = callback.message.chat.id
     if callback.data == "khadija":
         try:
             if os.path.exists("./images/"):
                 with open("./images/send.png",'rb') as photo:
                     caption = "I Love you "
-                    bot.send_photo(callback.message.chat.id,photo,caption=caption)
+                    bot.send_photo(chat_id,photo,caption=caption)
         except Exception as e:
             print(e)
     else:
@@ -49,9 +51,11 @@ def callVery(callback):
             btns.append(types.InlineKeyboardButton(part,callback_data=part))
 
         keyboard.add(*btns)
-        reply_markup = types.ReplyKeyboardRemove()
-        bot.send_message(callback.message.chat.id," ",reply_markup=reply_markup)
-        bot.send_message(callback.message.chat.id,"أي طرف تريد",reply_markup=keyboard)
+        bot.delete_message(chat_id,callback.message.message_id)
+        bot.send_message(chat_id,"أي طرف تريد",reply_markup=keyboard)
+
+
+    
 
 @bot.message_handler(func=lambda message:True)
 def handle_message(message):
